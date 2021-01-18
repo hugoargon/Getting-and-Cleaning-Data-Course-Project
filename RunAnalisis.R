@@ -17,7 +17,7 @@ library(dplyr)
 # STEP 0A - Get data
 ##############################################################################
 
-# download zip file
+# download zip file containing data if it hasn't already been downloaded
 zipUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 zipFile <- "UCI HAR Dataset.zip"
 
@@ -48,8 +48,8 @@ testActivity <- read.table(file.path(dataPath, "test", "y_test.txt"))
 
 # read features, don't convert text labels to factors
 features <- read.table(file.path(dataPath, "features.txt"), as.is = TRUE)
-## note: feature names (in features[, 2]) are not unique
-##       e.g. fBodyAcc-bandsEnergy()-1,8
+  ## note: feature names (in features[, 2]) are not unique
+  ##       e.g. fBodyAcc-bandsEnergy()-1,8
 
 # read activity labels
 activities <- read.table(file.path(dataPath, "activity_labels.txt"))
@@ -93,7 +93,7 @@ humanActivity <- humanActivity[, columnsToKeep]
 
 # replace activity values with named factor levels
 humanActivity$activity <- factor(humanActivity$activity, 
-                                 levels = activities[, 1], labels = activities[, 2])
+  levels = activities[, 1], labels = activities[, 2])
 
 
 ##############################################################################
